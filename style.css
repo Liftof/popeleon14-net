@@ -1,14 +1,24 @@
-/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+
+/* --- Base Styles --- */
 :root {
-    --papal-white: #F5F5F5;
-    --vatican-red: #BA0C2F;
-    --celestial-blue: #3498DB;
-    --divine-gold: #FFD700;
-    --holy-purple: #4A235A;
-    --light-grey: #e0e0e0;
-    --off-white: #F8F9FA;
-    --light-shadow: rgba(0, 0, 0, 0.1);
-    --card-bg: white;
+    --background-main: #FDFBF7; /* Off-white, parchment-like */
+    --text-primary: #3a3a3a; /* Dark grey for readability */
+    --text-secondary: #707070; /* Lighter grey */
+    --accent-gold: #bda17c; /* Refined, muted gold */
+    --accent-purple: #4A0D66; /* Deep, regal purple */
+    --accent-blue: #5a7d9a; /* Muted blue for user messages */
+    --card-bg: #FFFFFF;
+    --card-border: #EAEAEA;
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.08);
+
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
 }
 
 * {
@@ -17,151 +27,154 @@
     padding: 0;
 }
 
+html {
+    font-size: 16px; /* Base font size */
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--papal-white);
-    color: var(--holy-purple);
+    font-family: var(--font-body);
+    background-color: var(--background-main);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    line-height: 1.6;
-    font-size: 16px; /* Base font size for rem/em calculations */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header Styles */
+/* --- Header --- */
 header {
-    background: linear-gradient(135deg, var(--vatican-red), #8E0A24);
-    color: white;
-    padding: clamp(15px, 3vw, 20px) 0; /* Responsive padding */
-    box-shadow: 0 4px 10px var(--light-shadow);
-    position: sticky; /* Keep header visible on scroll */
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    padding: clamp(15px, 3vw, 25px) 0;
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow-light);
 }
 
 .header-content {
-    max-width: 1200px;
+    max-width: 1100px; /* Slightly narrower max-width */
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 0 clamp(10px, 2vw, 20px); /* Responsive padding */
+    justify-content: space-between; /* Space out elements */
+    padding: 0 clamp(15px, 4vw, 30px);
 }
 
 .logo-container {
-    margin-right: 15px;
+    margin-right: 0; /* Remove margin */
 }
 
 .papal-avatar {
-    width: clamp(50px, 8vw, 60px);  /* Responsive size */
-    height: clamp(50px, 8vw, 60px); /* Responsive size */
-    /* background-color: var(--divine-gold); Removed as image will cover */
+    width: clamp(45px, 7vw, 55px);
+    height: clamp(45px, 7vw, 55px);
     border-radius: 50%;
-    display: flex; /* Keep flex to center image if needed */
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Ensure image stays within bounds */
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-    animation: float 3s ease-in-out infinite;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow-medium);
+    border: 2px solid var(--accent-gold); /* Gold border */
+    animation: none; /* Remove float animation */
+    background-color: var(--background-main); /* Fallback bg */
 }
 
 .papal-avatar img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the area, cropping if necessary */
-    border-radius: 50%; /* Ensure image itself is rounded */
-}
-
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .title-container {
-    text-align: center;
+    text-align: right; /* Align title/subtitle right */
 }
 
 header h1 {
-    font-family: 'Calistoga', cursive;
-    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--accent-purple); /* Regal purple */
     margin: 0;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+    text-shadow: none;
 }
 
 .subtitle {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
-    font-weight: 500;
-    margin-top: 5px;
-    opacity: 0.9;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    color: var(--text-secondary);
+    margin-top: 2px;
+    opacity: 1;
+    font-style: normal;
 }
 
-/* Main Content */
+/* --- Main Content --- */
 main {
     flex: 1;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: clamp(15px, 4vw, 30px) clamp(10px, 2vw, 20px); /* Responsive padding */
+    padding: clamp(20px, 5vw, 40px) clamp(15px, 4vw, 30px);
     display: flex;
     flex-direction: column;
-    gap: clamp(20px, 4vw, 30px); /* Responsive gap */
+    gap: clamp(30px, 5vw, 50px);
 }
 
-/* Chat Section */
+/* --- Chat Section --- */
 .main-section {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 8px 20px var(--light-shadow);
-    padding: clamp(15px, 3vw, 25px); /* Responsive padding */
-    transition: all 0.3s ease;
-    display: flex; /* Added for better internal structuring */
-    flex-direction: column; /* Added for better internal structuring */
+    background-color: transparent; /* Remove card background */
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
 }
 
 #chat-container {
     display: flex;
     flex-direction: column;
-    min-height: 400px; /* Consider making this more flexible, e.g., vh unit or flex-grow */
-    flex-grow: 1; /* Allow chat container to grow */
+    min-height: 50vh; /* Use viewport height */
+    flex-grow: 1;
 }
 
 #chat-log {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
-    padding: clamp(10px, 2vw, 15px); /* Responsive padding */
-    border-radius: 8px;
-    background-color: var(--off-white);
-    min-height: 300px; /* This could be adjusted based on viewport height */
-    max-height: 60vh; /* Use viewport height for max height */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex; /* Use flexbox for chat log */
-    flex-direction: column; /* Stack messages vertically */
+    margin-bottom: clamp(15px, 3vw, 25px);
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--card-bg);
+    min-height: 350px;
+    max-height: 65vh;
+    border: 1px solid var(--card-border);
+    box-shadow: inset 0 1px 4px var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 2vw, 15px); /* Gap between message rows */
 }
 
 .message-row {
     display: flex;
-    margin-bottom: clamp(10px, 2vw, 15px); /* Use margin on row instead of bubble */
-    align-items: flex-end; /* Align avatar and bubble bottom */
-    gap: 10px; /* Space between avatar and bubble */
+    align-items: flex-start; /* Align avatar top */
+    gap: 12px;
+    max-width: 85%; /* Limit width of the row */
 }
 
 .pope-row {
-    justify-content: flex-start; /* Align pope messages to the left */
+    justify-content: flex-start;
 }
 
 .chat-avatar {
-    width: 35px; /* Size of the avatar */
-    height: 35px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     overflow: hidden;
-    flex-shrink: 0; /* Prevent avatar from shrinking */
-    align-self: flex-start; /* Align avatar to the top of the row */
-    margin-top: 5px; /* Add some space above avatar */
+    flex-shrink: 0;
+    margin-top: 0; /* Remove top margin */
+    border: 1px solid var(--card-border);
 }
 
 .chat-avatar img {
@@ -170,438 +183,341 @@ main {
     object-fit: cover;
 }
 
-
 .chat-welcome {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
+    padding: 15px 0;
+    width: 100%;
 }
+.chat-welcome .pope-message {
+    margin: 0 auto; /* Center welcome message */
+    max-width: 70%;
+    text-align: center;
+}
+.chat-welcome .pope-row {
+    justify-content: center;
+}
+.chat-welcome .chat-avatar {
+    display: none; /* Hide avatar for welcome */
+}
+
 
 .pope-message {
-    background-color: var(--vatican-red);
-    color: white;
-    border-radius: 18px;
-    padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
-    max-width: calc(100% - 55px); /* Adjust max-width considering avatar + gap */
-    margin-bottom: 0; /* Remove bottom margin as it's handled by message-row */
+    background-color: #EDE7F6; /* Light purple */
+    color: var(--accent-purple);
+    border-radius: var(--border-radius-lg);
+    border-top-left-radius: var(--border-radius-sm); /* Modern bubble shape */
+    padding: clamp(12px, 2vw, 18px) clamp(15px, 3vw, 22px);
+    max-width: 100%; /* Let flexbox handle width */
+    margin-bottom: 0;
     position: relative;
-    animation: fadeIn 0.5s ease-out;
-    flex-grow: 1; /* Allow bubble to take available space */
+    animation: fadeIn 0.3s ease-out;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    box-shadow: 0 2px 5px var(--shadow-light);
+    border: 1px solid #D1C4E9;
 }
-
-/* Adjust the :after pseudo-element if needed, or remove if not desired with avatar */
-.pope-message:after {
-    content: '';
-    position: absolute;
-    left: 20px;
-    bottom: -10px;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: var(--vatican-red);
-    border-bottom: 0;
-    border-left: 0;
-    margin-left: -5px;
-    margin-bottom: -10px;
-}
+.pope-message:after { display: none; } /* Remove triangle */
 
 .user-message {
-    background-color: var(--celestial-blue);
-    color: white;
-    border-radius: 18px;
-    padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
-    max-width: 80%; /* User messages don't have avatar, keep 80% */
+    background-color: #E3F2FD; /* Light blue */
+    color: #1E88E5; /* Darker blue text */
+    border-radius: var(--border-radius-lg);
+    border-top-right-radius: var(--border-radius-sm); /* Modern bubble shape */
+    padding: clamp(12px, 2vw, 18px) clamp(15px, 3vw, 22px);
+    max-width: 80%;
     margin-left: auto;
-    margin-bottom: 0; /* Remove bottom margin as it's handled by message-row */
+    margin-bottom: clamp(10px, 2vw, 15px); /* Keep margin for user messages */
     position: relative;
-    /* align-self: flex-end; This is handled by the row now */
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.3s ease-out;
+    line-height: 1.6;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    box-shadow: 0 2px 5px var(--shadow-light);
+    border: 1px solid #BBDEFB;
 }
-
-/* User messages don't need an avatar row, but we can wrap them for consistency if needed */
-/* Or just apply margin directly */
-.user-message {
-     margin-bottom: clamp(10px, 2vw, 15px); /* Add margin back if not using rows for user */
-}
-
-/* Adjust the :after pseudo-element if needed */
-.user-message:after {
-    content: '';
-    position: absolute;
-    right: 20px;
-    bottom: -10px;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-    border-top-color: var(--celestial-blue);
-    border-bottom: 0;
-    border-right: 0;
-    margin-right: -5px;
-    margin-bottom: -10px;
-}
+.user-message:after { display: none; } /* Remove triangle */
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .error-message {
-    background-color: #ffecec;
-    color: #d33;
-    border-left: 4px solid #d33;
+    background-color: #FFEBEE;
+    color: #C62828;
+    border-color: #EF9A9A;
 }
 
 .loading {
     font-style: italic;
-    color: #888;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
+/* --- Input Area --- */
 #input-area {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 12px;
+    margin-bottom: 10px;
+    align-items: center; /* Align items vertically */
 }
 
 textarea {
     flex: 1;
-    padding: clamp(10px, 2.5vw, 15px); /* Responsive padding */
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.9rem, 2.2vw, 1rem); /* Responsive font size */
+    padding: clamp(12px, 2.5vw, 16px) clamp(15px, 3vw, 20px);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--card-border);
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
     resize: none;
-    min-height: 50px; /* Ensure it's not too small */
-    height: auto; /* Allow it to grow with content if needed, or set a max-height */
-    transition: border 0.3s ease;
+    min-height: 50px;
+    height: auto;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--card-bg);
+    color: var(--text-primary);
 }
 
 textarea:focus {
     outline: none;
-    border-color: var(--celestial-blue);
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 3px rgba(74, 13, 102, 0.1);
+    background-color: white;
 }
 
-button {
-    background-color: var(--vatican-red);
+#ask-button {
+    background-color: var(--accent-purple);
     color: white;
     border: none;
-    padding: clamp(10px, 2vw, 12px) clamp(15px, 4vw, 25px); /* Responsive padding */
-    border-radius: 25px;
+    padding: 0; /* Remove padding */
+    width: clamp(45px, 7vw, 50px); /* Fixed width */
+    height: clamp(45px, 7vw, 50px); /* Fixed height */
+    border-radius: 50%; /* Make it circular */
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    font-size: clamp(0.9rem, 2.2vw, 1rem); /* Responsive font size */
-    min-width: 100px; /* Ensure button is not too small */
+    transition: all 0.2s ease-in-out;
+    font-size: 1.2rem; /* Icon size */
+    flex-shrink: 0; /* Prevent shrinking */
+    box-shadow: 0 3px 8px rgba(74, 13, 102, 0.2);
 }
+#ask-button span { display: none; } /* Hide text */
+#ask-button i { margin: 0; } /* Remove margin from icon */
 
-button:hover {
-    background-color: #96081f;
+#ask-button:hover {
+    background-color: #38084D;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(186, 12, 47, 0.2);
+    box-shadow: 0 5px 12px rgba(74, 13, 102, 0.3);
 }
-
-button:active {
+#ask-button:active {
     transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(74, 13, 102, 0.2);
 }
 
+/* --- Suggested Questions --- */
 .suggested-questions {
-    margin-top: 15px;
+    margin-top: 10px;
+    padding-left: 5px; /* Align with input */
 }
 
 .suggested-questions p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: clamp(0.8rem, 1.8vw, 0.85rem);
+    color: var(--text-secondary);
+    margin-bottom: 8px;
 }
 
 .question-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .question-chip {
-    background-color: #f0f0f0;
-    color: var(--holy-purple);
-    border-radius: 20px;
-    padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 15px); /* Responsive padding */
-    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
+    background-color: transparent;
+    color: var(--accent-purple);
+    border-radius: var(--border-radius-md);
+    padding: clamp(5px, 1.2vw, 7px) clamp(10px, 2vw, 14px);
+    font-size: clamp(0.8rem, 1.8vw, 0.85rem);
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid #ddd;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--accent-purple);
 }
 
 .question-chip:hover {
-    background-color: #e0e0e0;
+    background-color: rgba(74, 13, 102, 0.05);
     transform: translateY(-1px);
+    border-color: #38084D;
+    color: #38084D;
 }
 
-/* Features Section */
+/* --- Features Section --- */
 #features-section {
-    margin-top: 20px;
+    margin-top: clamp(20px, 4vw, 30px);
+    border-top: 1px solid var(--card-border); /* Separator */
+    padding-top: clamp(30px, 5vw, 50px); /* Space above features */
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller min for better fit */
-    gap: clamp(15px, 3vw, 25px); /* Responsive gap */
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); /* Ensure minmax works well */
+    gap: clamp(20px, 4vw, 30px);
 }
 
 .feature-card {
     background-color: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px var(--light-shadow);
-    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
-    transition: all 0.3s ease;
-    display: flex; /* Added for better internal structuring */
-    flex-direction: column; /* Added for better internal structuring */
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--card-border);
+    padding: clamp(18px, 3vw, 25px);
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px var(--shadow-light);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px var(--light-shadow);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+    border-color: #DCDCDC;
 }
 
 .feature-header {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    gap: 10px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
-    padding-bottom: 10px;
+    margin-bottom: 18px;
+    gap: 12px;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 12px;
 }
 
 .feature-header i {
-    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size */
-    color: var(--vatican-red);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    color: var(--accent-purple);
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
 }
 
 .feature-header h2 {
-    font-family: 'Calistoga', cursive;
-    font-size: clamp(1.2rem, 3.5vw, 1.5rem); /* Responsive font size */
-    color: var(--holy-purple);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.8vw, 1.3rem);
+    color: var(--text-primary);
     margin: 0;
 }
 
-#decree-content, #penance-output {
-    background-color: var(--off-white);
-    padding: clamp(10px, 2vw, 15px); /* Responsive padding */
-    border-radius: 8px;
-    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
-    min-height: 70px; /* Slightly reduced min-height */
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    flex-grow: 1; /* Allow content area to grow */
+#decree-content, #penance-output, #papal-name-output {
+    background-color: transparent; /* Remove inner background */
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: clamp(15px, 2.5vw, 20px);
+    min-height: 50px;
+    border: none;
+    flex-grow: 1;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
-
-#decree-content p, #penance-output p {
-    margin: 0;
-    font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
-}
-
-#papal-name-output { /* Style the output area for the name generator */
-    background-color: var(--off-white);
-    padding: clamp(10px, 2vw, 15px);
-    border-radius: 8px;
-    margin-top: 15px; /* Add some space above the output */
-    min-height: 50px; /* Give it some initial height */
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    text-align: center;
-    font-style: italic;
-    color: #555;
-}
-
-#papal-name-output p {
-    margin: 0;
-    font-size: clamp(0.9rem, 2.2vw, 1rem);
-}
-
-#papal-name-output .generated-name { /* Style for the actual generated name */
-    font-weight: bold;
-    color: var(--vatican-red);
+#papal-name-output {
+    text-align: left;
     font-style: normal;
-    font-family: 'Calistoga', cursive;
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--text-secondary);
 }
 
+#decree-content p, #penance-output p, #papal-name-output p {
+    margin: 0 0 10px 0;
+}
+#papal-name-output p:last-child { margin-bottom: 0; }
+
+#papal-name-output .generated-name {
+    font-weight: 600;
+    color: var(--accent-purple);
+    font-style: normal;
+    font-family: var(--font-heading);
+    font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+    display: block; /* Ensure it takes its own line */
+    margin-top: 5px;
+}
 
 .feature-button {
-    margin-top: 10px;
+    margin-top: auto; /* Push button to bottom */
     width: 100%;
-    background-color: var(--celestial-blue);
+    background-color: var(--accent-gold);
+    color: white;
+    border-radius: var(--border-radius-md);
+    padding: clamp(10px, 2vw, 12px) clamp(15px, 3vw, 20px);
+    font-weight: 500;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    box-shadow: 0 2px 5px rgba(189, 161, 124, 0.2);
 }
 
 .feature-button:hover {
-    background-color: #2980b9;
-    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
+    background-color: #a88a64;
+    box-shadow: 0 4px 10px rgba(189, 161, 124, 0.3);
 }
 
 select, input[type="text"] {
     width: 100%;
-    padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 15px); /* Responsive padding */
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.9rem, 2.2vw, 0.95rem); /* Responsive font size */
-    background-color: white;
+    padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 15px);
+    margin-bottom: 12px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--card-border);
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    background-color: #F9F9F9; /* Slightly off-white input */
+    transition: all 0.2s ease-in-out;
 }
 
 select:focus, input[type="text"]:focus {
     outline: none;
-    border-color: var(--celestial-blue);
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+    border-color: var(--accent-gold);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(189, 161, 124, 0.1);
 }
 
-/* Footer */
+/* --- Footer --- */
 footer {
-    background-color: #333;
-    color: var(--light-grey);
+    background-color: #f1f1f1; /* Lighter footer */
+    color: var(--text-secondary);
     text-align: center;
-    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
+    padding: clamp(20px, 4vw, 30px);
     margin-top: auto;
-    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    border-top: 1px solid var(--card-border);
 }
 
 .blessing {
-    font-family: 'Calistoga', cursive;
-    color: var(--divine-gold);
-    animation: glow 2s ease-in-out infinite;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--accent-gold);
+    animation: none; /* Remove glow */
+    display: inline-block; /* Needed for potential future styling */
+    margin-left: 5px;
 }
 
-@keyframes glow {
-    0%, 100% { text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-    50% { text-shadow: 0 0 15px rgba(255, 215, 0, 0.8); }
-}
-
-/* Responsive Adjustments */
+/* --- Responsive Adjustments --- */
+/* Keep existing media queries but adjust styles within them if needed */
 @media (max-width: 768px) {
     .header-content {
+        justify-content: center; /* Center header content on smaller screens */
         flex-direction: column;
         text-align: center;
     }
-    .logo-container {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    .feature-card {
-        margin-bottom: 20px;
-    }
-    .feature-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    #input-area {
-        flex-direction: column;
-    }
-    button { /* This rule applies to all buttons inside 768px media query */
-        width: 100%;
-    }
-} /* Closing brace for @media (max-width: 768px) */
-
-@media (max-width: 600px) { /* Added a breakpoint for slightly larger small screens */
-    .header-content {
-        padding: 0 15px;
-    }
-    header h1 {
-        font-size: clamp(1.6rem, 4.5vw, 2rem);
-    }
-    .subtitle {
-        font-size: clamp(0.85rem, 2.3vw, 1rem);
-    }
-    main {
-        padding: 20px 15px;
-    }
-    .main-section, .feature-card {
-        padding: 20px;
-    }
-    #chat-log {
-        min-height: 250px; /* Adjust for smaller screens */
-        max-height: 50vh;
-    }
-    textarea {
-        min-height: 45px;
-    }
-    button {
-        padding: 10px 20px;
-    }
-    .question-chip {
-        padding: 7px 12px;
-        font-size: 0.85rem;
-    }
-    .feature-header h2 {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-    }
+    .logo-container { margin-bottom: 10px; }
+    .title-container { text-align: center; }
+    #input-area { flex-direction: column; }
+    #ask-button { width: 100%; border-radius: var(--border-radius-md); } /* Full width button */
+    #ask-button span { display: inline; } /* Show text on mobile */
+    #ask-button i { margin-right: 8px; }
 }
 
 @media (max-width: 480px) {
-    header h1 {
-        font-size: clamp(1.5rem, 5vw, 1.8rem); /* Further adjust for very small screens */
-    }
-    .subtitle {
-        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-    }
-    .main-section, .feature-card {
-        padding: 15px;
-        border-radius: 10px;
-    }
-    #chat-log {
-        padding: 10px;
-        min-height: 200px;
-        max-height: 45vh;
-    }
-    .pope-message, .user-message {
-        padding: 10px 15px;
-        font-size: 0.9rem; /* Slightly smaller text in chat bubbles */
-    }
-    textarea {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-    button {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    .question-chips {
-        flex-direction: column;
-        gap: 8px;
-    }
-    .question-chip {
-        width: 100%;
-        text-align: center;
-        padding: 8px 10px;
-        font-size: 0.8rem;
-    }
-    .feature-header i {
-        font-size: 1.3rem;
-    }
-    .feature-header h2 {
-        font-size: clamp(1rem, 3.2vw, 1.2rem);
-    }
-    select, input[type="text"] {
-        padding: 10px 12px;
-        font-size: 0.9rem;
-    }
-    footer {
-        padding: 15px;
-        font-size: 0.8rem;
-    }
+    .message-row { max-width: 95%; } /* Allow slightly wider messages */
+    .pope-message, .user-message { font-size: 0.85rem; }
+    textarea { font-size: 0.9rem; }
+    button { font-size: 0.9rem; }
+    .question-chip { font-size: 0.75rem; padding: 6px 12px; }
+    .feature-header h2 { font-size: 1.1rem; }
+    select, input[type="text"] { font-size: 0.85rem; }
+    footer { font-size: 0.75rem; }
 }
 
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    .subtitle {
-        font-size: 1rem;
-    }
-    
-    .main-section, .feature-card {
-        padding: 15px; /* This was duplicated, ensure it's intended or remove if covered by 480px */
-    }
-    /* Note: .question-chips and .question-chip styles for 480px might override these if not specific enough */
-}
+/* Remove duplicated 480px query */
