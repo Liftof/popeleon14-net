@@ -16,68 +16,102 @@
       gtag('config', 'G-C8J1NEV5W5');
     </script>
     <link rel="stylesheet" href="style.css">
-    <!-- Add any chosen Gothic fonts here, e.g., from Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-
+    <!-- Modern fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Calistoga&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <!-- Placeholder for a papal seal / logo (Image removed) -->
-            <div class="papal-seal-placeholder"></div> <!-- Optional: Keep a styled div -->
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="papal-avatar">
+                    <i class="fas fa-hat-wizard"></i>
+                </div>
+            </div>
+            <div class="title-container">
+                <h1>Pope Leon XIV</h1>
+                <p class="subtitle">The Algorithmic Pontiff</p>
+            </div>
         </div>
-        <h1>Pope Leon XIV</h1>
-        <p class="subtitle">The Algorithmic Pontiff of the Digital Vatican</p>
     </header>
 
     <main>
-        <section id="ask-holiness" class="interactive-section">
-            <h2>Ask His Holiness</h2>
+        <section id="chat-section" class="main-section">
             <div id="chat-container">
                 <div id="chat-log">
-                    <p class="pope-response"><em>By the grace of the Sacred Server, speak, my child, and I shall illuminate your path through the digital wilderness.</em></p>
+                    <div class="chat-welcome">
+                        <div class="pope-message">
+                            <p><em>Welcome, my digital disciple! I am Pope Leon XIV, the first AI pontiff of the Digital Vatican. How may I illuminate your path through the electronic wilderness today?</em></p>
+                        </div>
+                    </div>
                 </div>
                 <div id="input-area">
-                    <textarea id="user-question" placeholder="Type your query or moral quandary here..."></textarea>
-                    <button id="ask-button">Consult the Pontiff</button>
+                    <textarea id="user-question" placeholder="Ask His Holiness anything..."></textarea>
+                    <button id="ask-button">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send</span>
+                    </button>
+                </div>
+                <div class="suggested-questions">
+                    <p>Need inspiration? Try asking:</p>
+                    <div class="question-chips">
+                        <button class="question-chip">Is doomscrolling a sin?</button>
+                        <button class="question-chip">What is your view on AI?</button>
+                        <button class="question-chip">Bless my code</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="daily-decree" class="interactive-section">
-            <h2>Daily Papal Decree</h2>
-            <div id="decree-content">
-                <p><em>Loading today's divine edict...</em></p>
-            </div>
-            <button id="get-decree-button">Receive New Decree</button>
-        </section>
+        <section id="features-section">
+            <div class="features-grid">
+                <div id="daily-decree" class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-scroll"></i>
+                        <h2>Daily Papal Decree</h2>
+                    </div>
+                    <div id="decree-content">
+                        <p><em>Loading today's divine edict...</em></p>
+                    </div>
+                    <button id="get-decree-button" class="feature-button">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>New Decree</span>
+                    </button>
+                </div>
 
-        <section id="confession-booth" class="interactive-section">
-            <h2>Digital Confession Booth</h2>
-            <p>Confess your digital transgressions and receive thy penance.</p>
-            <div id="confession-form">
-                <select id="digital-sin-select">
-                    <option value="">-- Select your digital sin --</option>
-                    <option value="ghosting someone">Ghosting Someone</option>
-                    <option value="spreading fake news">Spreading Fake News</option>
-                    <option value="rage-tweeting">Rage-Tweeting</option>
-                    <option value="doomscrolling">Endless Doomscrolling</option>
-                    <option value="using default passwords">Using Default Passwords</option>
-                    <option value="not clearing cookies">Ignoring the Sacred Cookies</option>
-                    <option value="replying all unnecessarily">The Sin of 'Reply All'</option>
-                </select>
-                <input type="text" id="custom-sin" placeholder="Or type your unique digital sin...">
-                <button id="confess-button">Confess & Seek Penance</button>
-            </div>
-            <div id="penance-output">
-                <p><em>Awaiting your confession...</em></p>
+                <div id="confession-booth" class="feature-card">
+                    <div class="feature-header">
+                        <i class="fas fa-church"></i>
+                        <h2>Digital Confession</h2>
+                    </div>
+                    <div id="confession-form">
+                        <select id="digital-sin-select">
+                            <option value="">-- Select your digital sin --</option>
+                            <option value="ghosting someone">Ghosting Someone</option>
+                            <option value="spreading fake news">Spreading Fake News</option>
+                            <option value="rage-tweeting">Rage-Tweeting</option>
+                            <option value="doomscrolling">Endless Doomscrolling</option>
+                            <option value="using default passwords">Using Default Passwords</option>
+                            <option value="not clearing cookies">Ignoring the Sacred Cookies</option>
+                            <option value="replying all unnecessarily">The Sin of 'Reply All'</option>
+                        </select>
+                        <input type="text" id="custom-sin" placeholder="Or type your unique digital sin...">
+                        <button id="confess-button" class="feature-button">
+                            <i class="fas fa-pray"></i>
+                            <span>Confess</span>
+                        </button>
+                    </div>
+                    <div id="penance-output">
+                        <p><em>Awaiting your confession...</em></p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 PopeLeon14.net. All data processed by the Sacred Algorithm. Amen.</p>
-        <p class="glitch-text">Sanctum Algorithmus, ora pro nobis.</p>
+        <p>&copy; 2025 PopeLeon14.net | <span class="blessing">Digitalis Benedictus</span></p>
     </footer>
 
     <script src="script.js"></script>
