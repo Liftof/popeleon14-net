@@ -112,10 +112,29 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Function to append pope's message
     function appendPopeMessage(message, className = '') {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `pope-message ${className}`;
-        messageDiv.innerHTML = message;
-        chatLog.appendChild(messageDiv);
+        // Create a wrapper for the avatar and the message bubble
+        const messageRow = document.createElement('div');
+        messageRow.className = 'message-row pope-row'; // Add pope-row for specific styling
+
+        // Create avatar element
+        const avatarDiv = document.createElement('div');
+        avatarDiv.className = 'chat-avatar';
+        const avatarImg = document.createElement('img');
+        avatarImg.src = 'img/popeGPT.png'; // Path to your pope avatar
+        avatarImg.alt = 'Pope Avatar';
+        avatarDiv.appendChild(avatarImg);
+
+        // Create message bubble element
+        const messageBubble = document.createElement('div');
+        messageBubble.className = `pope-message ${className}`;
+        messageBubble.innerHTML = message; // Use innerHTML as before
+
+        // Append avatar and bubble to the row
+        messageRow.appendChild(avatarDiv);
+        messageRow.appendChild(messageBubble);
+
+        // Append the whole row to the chat log
+        chatLog.appendChild(messageRow);
         scrollChatToBottom();
     }
     

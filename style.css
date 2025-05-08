@@ -139,7 +139,37 @@ main {
     min-height: 300px; /* This could be adjusted based on viewport height */
     max-height: 60vh; /* Use viewport height for max height */
     border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox for chat log */
+    flex-direction: column; /* Stack messages vertically */
 }
+
+.message-row {
+    display: flex;
+    margin-bottom: clamp(10px, 2vw, 15px); /* Use margin on row instead of bubble */
+    align-items: flex-end; /* Align avatar and bubble bottom */
+    gap: 10px; /* Space between avatar and bubble */
+}
+
+.pope-row {
+    justify-content: flex-start; /* Align pope messages to the left */
+}
+
+.chat-avatar {
+    width: 35px; /* Size of the avatar */
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent avatar from shrinking */
+    align-self: flex-start; /* Align avatar to the top of the row */
+    margin-top: 5px; /* Add some space above avatar */
+}
+
+.chat-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .chat-welcome {
     display: flex;
@@ -152,12 +182,14 @@ main {
     color: white;
     border-radius: 18px;
     padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
-    max-width: 80%;
-    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
+    max-width: calc(100% - 55px); /* Adjust max-width considering avatar + gap */
+    margin-bottom: 0; /* Remove bottom margin as it's handled by message-row */
     position: relative;
     animation: fadeIn 0.5s ease-out;
+    flex-grow: 1; /* Allow bubble to take available space */
 }
 
+/* Adjust the :after pseudo-element if needed, or remove if not desired with avatar */
 .pope-message:after {
     content: '';
     position: absolute;
@@ -178,14 +210,21 @@ main {
     color: white;
     border-radius: 18px;
     padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
-    max-width: 80%;
+    max-width: 80%; /* User messages don't have avatar, keep 80% */
     margin-left: auto;
-    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
+    margin-bottom: 0; /* Remove bottom margin as it's handled by message-row */
     position: relative;
-    align-self: flex-end;
+    /* align-self: flex-end; This is handled by the row now */
     animation: fadeIn 0.5s ease-out;
 }
 
+/* User messages don't need an avatar row, but we can wrap them for consistency if needed */
+/* Or just apply margin directly */
+.user-message {
+     margin-bottom: clamp(10px, 2vw, 15px); /* Add margin back if not using rows for user */
+}
+
+/* Adjust the :after pseudo-element if needed */
 .user-message:after {
     content: '';
     position: absolute;
