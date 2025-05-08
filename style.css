@@ -27,14 +27,18 @@ body {
     display: flex;
     flex-direction: column;
     line-height: 1.6;
+    font-size: 16px; /* Base font size for rem/em calculations */
 }
 
 /* Header Styles */
 header {
     background: linear-gradient(135deg, var(--vatican-red), #8E0A24);
     color: white;
-    padding: 20px 0;
+    padding: clamp(15px, 3vw, 20px) 0; /* Responsive padding */
     box-shadow: 0 4px 10px var(--light-shadow);
+    position: sticky; /* Keep header visible on scroll */
+    top: 0;
+    z-index: 1000;
 }
 
 .header-content {
@@ -43,7 +47,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
+    padding: 0 clamp(10px, 2vw, 20px); /* Responsive padding */
 }
 
 .logo-container {
@@ -51,14 +55,14 @@ header {
 }
 
 .papal-avatar {
-    width: 60px;
-    height: 60px;
+    width: clamp(50px, 8vw, 60px);  /* Responsive size */
+    height: clamp(50px, 8vw, 60px); /* Responsive size */
     background-color: var(--divine-gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
     color: var(--vatican-red);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     animation: float 3s ease-in-out infinite;
@@ -75,14 +79,14 @@ header {
 
 header h1 {
     font-family: 'Calistoga', cursive;
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
     margin: 0;
     letter-spacing: 1px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
     font-weight: 500;
     margin-top: 5px;
     opacity: 0.9;
@@ -94,10 +98,10 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: clamp(15px, 4vw, 30px) clamp(10px, 2vw, 20px); /* Responsive padding */
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: clamp(20px, 4vw, 30px); /* Responsive gap */
 }
 
 /* Chat Section */
@@ -105,25 +109,28 @@ main {
     background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 8px 20px var(--light-shadow);
-    padding: 25px;
+    padding: clamp(15px, 3vw, 25px); /* Responsive padding */
     transition: all 0.3s ease;
+    display: flex; /* Added for better internal structuring */
+    flex-direction: column; /* Added for better internal structuring */
 }
 
 #chat-container {
     display: flex;
     flex-direction: column;
-    min-height: 400px;
+    min-height: 400px; /* Consider making this more flexible, e.g., vh unit or flex-grow */
+    flex-grow: 1; /* Allow chat container to grow */
 }
 
 #chat-log {
     flex: 1;
     overflow-y: auto;
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+    padding: clamp(10px, 2vw, 15px); /* Responsive padding */
     border-radius: 8px;
     background-color: var(--off-white);
-    min-height: 300px;
-    max-height: 500px;
+    min-height: 300px; /* This could be adjusted based on viewport height */
+    max-height: 60vh; /* Use viewport height for max height */
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -137,9 +144,9 @@ main {
     background-color: var(--vatican-red);
     color: white;
     border-radius: 18px;
-    padding: 15px 20px;
+    padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
     max-width: 80%;
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
     position: relative;
     animation: fadeIn 0.5s ease-out;
 }
@@ -163,10 +170,10 @@ main {
     background-color: var(--celestial-blue);
     color: white;
     border-radius: 18px;
-    padding: 15px 20px;
+    padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 20px); /* Responsive padding */
     max-width: 80%;
     margin-left: auto;
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
     position: relative;
     align-self: flex-end;
     animation: fadeIn 0.5s ease-out;
@@ -211,13 +218,14 @@ main {
 
 textarea {
     flex: 1;
-    padding: 15px;
+    padding: clamp(10px, 2.5vw, 15px); /* Responsive padding */
     border-radius: 25px;
     border: 1px solid #ddd;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1rem); /* Responsive font size */
     resize: none;
-    height: 60px;
+    min-height: 50px; /* Ensure it's not too small */
+    height: auto; /* Allow it to grow with content if needed, or set a max-height */
     transition: border 0.3s ease;
 }
 
@@ -231,7 +239,7 @@ button {
     background-color: var(--vatican-red);
     color: white;
     border: none;
-    padding: 12px 25px;
+    padding: clamp(10px, 2vw, 12px) clamp(15px, 4vw, 25px); /* Responsive padding */
     border-radius: 25px;
     font-weight: 500;
     cursor: pointer;
@@ -240,7 +248,8 @@ button {
     justify-content: center;
     gap: 8px;
     transition: all 0.3s ease;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.2vw, 1rem); /* Responsive font size */
+    min-width: 100px; /* Ensure button is not too small */
 }
 
 button:hover {
@@ -273,8 +282,8 @@ button:active {
     background-color: #f0f0f0;
     color: var(--holy-purple);
     border-radius: 20px;
-    padding: 8px 15px;
-    font-size: 0.9rem;
+    padding: clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 15px); /* Responsive padding */
+    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
     cursor: pointer;
     transition: all 0.2s ease;
     border: 1px solid #ddd;
@@ -292,16 +301,18 @@ button:active {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller min for better fit */
+    gap: clamp(15px, 3vw, 25px); /* Responsive gap */
 }
 
 .feature-card {
     background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 5px 15px var(--light-shadow);
-    padding: 20px;
+    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
     transition: all 0.3s ease;
+    display: flex; /* Added for better internal structuring */
+    flex-direction: column; /* Added for better internal structuring */
 }
 
 .feature-card:hover {
@@ -319,28 +330,30 @@ button:active {
 }
 
 .feature-header i {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem); /* Responsive font size */
     color: var(--vatican-red);
 }
 
 .feature-header h2 {
     font-family: 'Calistoga', cursive;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3.5vw, 1.5rem); /* Responsive font size */
     color: var(--holy-purple);
     margin: 0;
 }
 
 #decree-content, #penance-output {
     background-color: var(--off-white);
-    padding: 15px;
+    padding: clamp(10px, 2vw, 15px); /* Responsive padding */
     border-radius: 8px;
-    margin-bottom: 15px;
-    min-height: 80px;
+    margin-bottom: clamp(10px, 2vw, 15px); /* Responsive margin */
+    min-height: 70px; /* Slightly reduced min-height */
     border: 1px solid rgba(0, 0, 0, 0.06);
+    flex-grow: 1; /* Allow content area to grow */
 }
 
 #decree-content p, #penance-output p {
     margin: 0;
+    font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
 }
 
 .feature-button {
@@ -356,12 +369,12 @@ button:active {
 
 select, input[type="text"] {
     width: 100%;
-    padding: 12px 15px;
+    padding: clamp(10px, 2vw, 12px) clamp(12px, 3vw, 15px); /* Responsive padding */
     margin-bottom: 10px;
     border-radius: 8px;
     border: 1px solid #ddd;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2.2vw, 0.95rem); /* Responsive font size */
     background-color: white;
 }
 
@@ -376,9 +389,9 @@ footer {
     background-color: #333;
     color: var(--light-grey);
     text-align: center;
-    padding: 20px;
+    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
     margin-top: auto;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
 }
 
 .blessing {
@@ -398,27 +411,111 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-    
     .logo-container {
         margin-right: 0;
         margin-bottom: 10px;
     }
-    
     .feature-card {
         margin-bottom: 20px;
     }
-    
     .feature-header {
         flex-direction: column;
         text-align: center;
     }
-    
     #input-area {
         flex-direction: column;
     }
-    
-    button {
+    button { /* This rule applies to all buttons inside 768px media query */
         width: 100%;
+    }
+} /* Closing brace for @media (max-width: 768px) */
+
+@media (max-width: 600px) { /* Added a breakpoint for slightly larger small screens */
+    .header-content {
+        padding: 0 15px;
+    }
+    header h1 {
+        font-size: clamp(1.6rem, 4.5vw, 2rem);
+    }
+    .subtitle {
+        font-size: clamp(0.85rem, 2.3vw, 1rem);
+    }
+    main {
+        padding: 20px 15px;
+    }
+    .main-section, .feature-card {
+        padding: 20px;
+    }
+    #chat-log {
+        min-height: 250px; /* Adjust for smaller screens */
+        max-height: 50vh;
+    }
+    textarea {
+        min-height: 45px;
+    }
+    button {
+        padding: 10px 20px;
+    }
+    .question-chip {
+        padding: 7px 12px;
+        font-size: 0.85rem;
+    }
+    .feature-header h2 {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: clamp(1.5rem, 5vw, 1.8rem); /* Further adjust for very small screens */
+    }
+    .subtitle {
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    }
+    .main-section, .feature-card {
+        padding: 15px;
+        border-radius: 10px;
+    }
+    #chat-log {
+        padding: 10px;
+        min-height: 200px;
+        max-height: 45vh;
+    }
+    .pope-message, .user-message {
+        padding: 10px 15px;
+        font-size: 0.9rem; /* Slightly smaller text in chat bubbles */
+    }
+    textarea {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .question-chips {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .question-chip {
+        width: 100%;
+        text-align: center;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+    .feature-header i {
+        font-size: 1.3rem;
+    }
+    .feature-header h2 {
+        font-size: clamp(1rem, 3.2vw, 1.2rem);
+    }
+    select, input[type="text"] {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    footer {
+        padding: 15px;
+        font-size: 0.8rem;
     }
 }
 
@@ -432,15 +529,7 @@ footer {
     }
     
     .main-section, .feature-card {
-        padding: 15px;
+        padding: 15px; /* This was duplicated, ensure it's intended or remove if covered by 480px */
     }
-    
-    .question-chips {
-        flex-direction: column;
-    }
-    
-    .question-chip {
-        width: 100%;
-        text-align: center;
-    }
+    /* Note: .question-chips and .question-chip styles for 480px might override these if not specific enough */
 }
