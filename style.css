@@ -57,16 +57,23 @@ header {
 .papal-avatar {
     width: clamp(50px, 8vw, 60px);  /* Responsive size */
     height: clamp(50px, 8vw, 60px); /* Responsive size */
-    background-color: var(--divine-gold);
+    /* background-color: var(--divine-gold); Removed as image will cover */
     border-radius: 50%;
-    display: flex;
+    display: flex; /* Keep flex to center image if needed */
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.5rem, 4vw, 2rem); /* Responsive font size */
-    color: var(--vatican-red);
+    overflow: hidden; /* Ensure image stays within bounds */
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
     animation: float 3s ease-in-out infinite;
 }
+
+.papal-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 50%; /* Ensure image itself is rounded */
+}
+
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
