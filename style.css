@@ -356,6 +356,32 @@ button:active {
     font-size: clamp(0.85rem, 2vw, 0.95rem); /* Responsive font size */
 }
 
+#papal-name-output { /* Style the output area for the name generator */
+    background-color: var(--off-white);
+    padding: clamp(10px, 2vw, 15px);
+    border-radius: 8px;
+    margin-top: 15px; /* Add some space above the output */
+    min-height: 50px; /* Give it some initial height */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+#papal-name-output p {
+    margin: 0;
+    font-size: clamp(0.9rem, 2.2vw, 1rem);
+}
+
+#papal-name-output .generated-name { /* Style for the actual generated name */
+    font-weight: bold;
+    color: var(--vatican-red);
+    font-style: normal;
+    font-family: 'Calistoga', cursive;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+
 .feature-button {
     margin-top: 10px;
     width: 100%;

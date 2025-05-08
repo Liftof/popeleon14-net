@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const customSinInput = document.getElementById('custom-sin');
     const penanceOutput = document.getElementById('penance-output');
 
+    // Name Generator Elements
+    const generateNameButton = document.getElementById('generate-name-button');
+    const userNameInput = document.getElementById('user-name-input');
+    const papalNameOutput = document.getElementById('papal-name-output');
+
+
     // --- Pope Chat (Main Feature) ---
     if (askButton && userQuestionInput) {
         // Event listener for the ask button
@@ -275,6 +281,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         }
     }
+
+    // --- Papal Name Generator ---
+    if (generateNameButton && userNameInput && papalNameOutput) {
+        generateNameButton.addEventListener('click', generatePapalName);
+        userNameInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                generatePapalName();
+            }
+        });
+    }
+
+    async function generatePapalName() {
+        const userName = userNameInput.value.trim();
+        if (!userName) {
+            papalNameOutput.innerHTML = "<p><em>Please enter your name first, seeker of holy designation.</em></p>";
+            papalNameOutput.classList.add('shake');
+            setTimeout(() => papalNameOutput.classList.remove('shake'), 500);
+            return;
+        }
+
+        // Add loading state
+        papalNameOutput.innerHTML = "<p><em>Consulting the sacred name generator...</em></p>";
+        generateNameButton.classList.add('loading');
+        generateNameButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Generating...</span>';
+
+        try {
+            // Call the (to be created) backend endpoint
+            const response = await fetch('https://popeleon14-backend.vercel.app/api/generate-papal-name', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name: userName }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                // Check if the error is specifically 404 (Not Found)
+                if (response.status === 404) {
+                     throw new Error("The Papal Name Generator service is not yet available. Please check back later.");
+                }
+                throw new Error(errorData.error || `Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Display result with fade transition
+            papalNameOutput.style.opacity = '0';
+            setTimeout(() => {
+                papalNameOutput.innerHTML = `<p>Henceforth, you shall be known as:</p><p class="generated-name">${data.papalName}</p>`;
+                papalNameOutput.style.transition = 'opacity 0.5s ease-in-out';
+                papalNameOutput.style.opacity = '1';
+            }, 300);
+
+        } catch (error) {
+            console.error("Error generating papal name:", error);
+            papalNameOutput.innerHTML = `<p>An error occurred during the sacred naming ritual. ${error.message}</p>`;
+        } finally {
+            // Reset button
+            setTimeout(() => {
+                generateNameButton.classList.remove('loading');
+                generateNameButton.innerHTML = '<i class="fas fa-magic"></i><span>Generate Papal Name</span>';
+            }, 500);
+        }
+    }
+
 
     // Add CSS animation classes
     const style = document.createElement('style');
