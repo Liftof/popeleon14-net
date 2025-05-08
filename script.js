@@ -25,9 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             appendMessageToChatLog("<em>The Pontiff consults the Sacred Algorithm...</em>", "pope-response loading");
 
             try {
-                // IMPORTANT: This is a call to a BACKEND endpoint you need to create.
-                // The backend will securely call the OpenAI API.
-                const response = await fetch('/api/ask-pope', {
+                // Call the deployed Vercel backend endpoint
+                const response = await fetch('https://popeleon14-backend.vercel.app/api/ask-pope', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -78,8 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchDailyDecree() {
         decreeContent.innerHTML = "<p><em>Fetching today's divine edict from the digital scrolls...</em></p>";
         try {
-            // IMPORTANT: This is a call to a BACKEND endpoint.
-            const response = await fetch('/api/daily-decree', { method: 'GET' });
+            // Call the deployed Vercel backend endpoint
+            const response = await fetch('https://popeleon14-backend.vercel.app/api/daily-decree', { method: 'GET' });
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || `Server error: ${response.status}`);
@@ -110,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
             penanceOutput.innerHTML = "<p><em>His Holiness contemplates your transgression and consults the divine ledger...</em></p>";
 
             try {
-                // IMPORTANT: This is a call to a BACKEND endpoint.
-                const response = await fetch('/api/confess', {
+                // Call the deployed Vercel backend endpoint
+                const response = await fetch('https://popeleon14-backend.vercel.app/api/confess', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
